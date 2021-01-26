@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欢迎注册 </title>
+  <link href="GD_tubiao3.ico" rel="shortcut icon">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      /*去掉下换线 */
+      color: inherit;
+      /*恢复字体的默认颜色 */
+    }
+
+    /* a:hover {
+      color: #FF6D00;
+      text-decoration: underline;
+
+    } */
+ button{
+outline: none;
+border: 0px ;
+cursor: pointer;
+
+   }
+    .baba {
+      width: 1500px;
+      height: 750px;
+      margin: 0 auto;
+      position: relative;
+      /* background: pink; */
+    }
+
+    /*头部样式*/
+    .son_top {
+      width: 1000px;
+      height: 100px;
+      position: absolute;
+      top: 10px;
+      left: 0px;
+      /* background: pink; */
+    }
+
+    .son_top a img {
+      vertical-align: middle;
+      /*图片和文字垂直居中*/
+    }
+
+    .son_top2 {
+      width: 150px;
+      height: 20px;
+      position: absolute;
+      top: 100px;
+      left: 1020px;
+    }
+
+    /*头部样式结束*/
+    .son_mid {
+      width: 1170px;
+      height: 700px;
+      border-top: 5px #FF6D00 solid;
+      position: absolute;
+      top: 130px;
+      left: 0px;
+      /* background: green; */
+    }
+
+    /* .son_mid p {
+      margin: 30px;
+
+    } */
+
+    /* .son_mid input {
+      width: 100px;
+      height: 10px;
+    } */
+
+    /* .son_mid a {
+      width: 200px;
+      height: 50px;
+      font-size: 20px;
+      color: white;
+      background: #FF6D00;
+    } */
+
+    .son_mid button {
+      width: 100px;
+      height: 30px;
+      font-size: 15px;
+      color: white;
+      background: #FF6D00;
+    }
+
+    /* 鼠标移动a标签变色 */
+    .son_top2 :hover {
+      color: #FF6D00;
+      text-decoration: underline;
+
+    }
+
+    /* 鼠标移动a标签变色结束 */
+  </style>
+
+  <script>
+
+
+    function tijiao() {
+
+      var lst = [];
+      var temp = localStorage.getItem("Allyonghu")
+      var bol = true;
+
+      if (temp != null) {
+        lst = JSON.parse(temp)
+      }
+
+
+      var mingzi = document.getElementById("mingzi").value;
+
+
+      if (mingzi.length == 0) {
+        alert("名字不能为空");
+        bol = false
+        return;
+      }
+      var xingshi = document.getElementById("xingshi").value;
+      if (xingshi.length == 0) {
+        alert("姓氏不能为空");
+        bol = false
+        return;
+      }
+
+      var dengluming = document.getElementById("dengluming").value;
+      if (!(/^([_-a-zA-Z0-9]+)$/).test(dengluming)) {
+        alert("用户名不符合规范");
+        bol = false
+        return;
+      }
+      for (var i = 0; i < lst.length; i++) {
+        if (dengluming == lst[i].dengluming) {
+          alert("已经存在此用户名，请换一个")
+          bol = false
+          return
+        }
+      }
+
+
+      var mima = document.getElementById("mima").value;
+      if (mima.length < 6) {
+        alert("密码不能低于6位数");
+        bol = false
+        return;
+      }
+
+      var mima2 = document.getElementById("mima2").value;
+      if (mima2 != mima) {
+        alert("两次密码输入不一致");
+        bol = false
+        return;
+      }
+
+      var youxiang = document.getElementById("youxiang").value;
+
+      if (!(/^[\w.-]+@([0-9a-zA-Z\w-]+\.)+[0-9a-zA-Z]{2,8}$/).test(youxiang)) {
+        alert("邮箱规则不正确");
+        bol = false
+        return;
+      }
+
+      var xingbieList = document.getElementsByName("xingbie");
+      var xingbie = "男";
+      if (xingbieList[1].checked) {
+        xingbie = "女";
+      }
+
+
+      var touxiang = document.getElementById("touxiang").value;
+
+
+      var list = document.getElementsByName("ah");
+      var ah = "";
+      for (var i = 0; i < list.length; i++) {
+        if (list[i].checked) {
+          ah += list[i].value + ","
+        }
+      }
+
+      if (bol) {
+        var obj = new Object();
+        obj.mingzi = mingzi;
+        obj.xingshi = xingshi;
+        obj.xingbie = xingbie;
+        obj.ah = ah;
+        obj.mima = mima;
+        obj.dengluming = dengluming;
+        obj.youxiang = youxiang;
+        obj.touxiang = touxiang;
+
+        lst.push(obj);
+
+        localStorage.setItem("Allyonghu", JSON.stringify(lst));
+        location.href = "login.html";
+        alert("注册成功")
+
+      }
+
+    }
+
+
+
+
+    function getFileQuick() {
+      var reader = new FileReader();
+      var file = document.querySelector("#touxiang").files;
+      reader.readAsDataURL(file[0]);
+      reader.onload = function () {
+        document.querySelector("#imgHeader").src = reader.result;
+      }
+    }
+
+
+  </script>
+</head>
+
+<body>
+  <div class="baba">
+    <!-- 头部开始 -->
+    <div class="son_top">
+      <a href="index.html" target="_parent" style="font-family: '华文琥珀'; font-size: 50px; color:#FF6D00 ;"><img
+          src="img/GD_tubiao4.png"><span>Guodong果冻零食</span> </a>
+    </div>
+    <div class="son_top2"><a href="login.html" target="_parent">已经注册？点击登录</a></div>
+    <!-- 头部结束 -->
+    <div class="son_mid">
+
+      <h2>注册账户</h2>
+      <br>
+      <table id=table1>
+        <tr>
+          <td class="td1">名字：</td>
+          <td><input placeholder="请输入您的名字" id=mingzi></td>
+        </tr>
+        <tr>
+          <td class="td1">姓氏：</td>
+          <td><input placeholder="请输入您的姓氏" id=xingshi></td>
+        </tr>
+        <tr>
+          <td class="td1">登录名：</td>
+          <td><input placeholder="请输入您的登录名" id=dengluming></td>
+        </tr>
+        <tr>
+          <td class="td1">密码：</td>
+          <td><input type="password" placeholder="请输入您的密码" id="mima" value=""></td>
+        </tr>
+        <tr>
+          <td class="td1">再次输入密码：</td>
+          <td><input type="password" placeholder="请再次输入您的密码" id="mima2"></td>
+        </tr>
+        <tr>
+          <td class="td1">电子邮箱：</td>
+          <td><input placeholder="请输入您的邮箱" id="youxiang"></td>
+        </tr>
+        <tr>
+          <td class="td1">性别：</td>
+          <td><input type="radio" name=xingbie checked=true>男&nbsp;&nbsp;<input type="radio" name=xingbie>女</td>
+        </tr>
+        <tr>
+          <td class="td1">头像:</td>
+          <td>
+            <input type="file" value="选择文件" onchange="getFileQuick()" id=touxiang><img src="img/QQ2.png" id="imgHeader">
+          </td>
+        </tr>
+        <tr>
+          <td class="td1">爱好:</td>
+          <td><input type="checkbox" name="ah" value="运动">运动&nbsp;<input type="checkbox" name="ah"
+              value="聊天">聊天&nbsp;<input type="checkbox" name="ah" value="玩游戏">玩游戏
+          </td>
+        </tr>
+        <tr>
+          <td class="td1">出生年月:</td>
+          <td><select>
+              <option>请选择</option>
+              <option>1991</option>
+              <option>1990</option>
+              <option>1992</option>
+              <option>1998</option>
+            </select>年
+            <select>
+              <option>请选择</option>
+              <option>01</option>
+              <option>02</option>
+              <option>03</option>
+              <option>04</option>
+              <option>05</option>
+              <option>06</option>
+              <option>07</option>
+              <option>08</option>
+              <option>09</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+            </select>月
+            <select>
+              <option>请选择</option>
+              <option>03</option>
+              <option>04</option>
+              <option>05</option>
+            </select>日
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <a href="#" onclick="tijiao()"> <button>注册</button></a>
+            <a href=""><button> 清除</button></a>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+
+  </div>
+</body>
+<iframe src="Fiframe.html" width="100%" height="130px" frameborder=0 scrolling=no></iframe>
+
+</html>

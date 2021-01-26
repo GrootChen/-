@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+
+
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      /*去掉下换线 */
+      color: inherit;
+      /*恢复字体默认颜色 */
+    }
+
+    a:hover {
+      color: red;
+      /* text-decoration: underline; */
+
+    }
+   button{
+outline: none;
+border: 0px ;
+cursor: pointer;
+
+   }
+    .baba {
+      width: 1500px;
+      height: 1600px;
+      margin: 0 auto;
+      /* background: green; */
+    }
+
+    .left {
+      width: 400px;
+      height: 500px;
+      float: left;
+      /* background: pink; */
+    }
+
+    .left ul li {
+      float: left;
+      margin: 10px 10px 0 5px;
+    }
+
+    .left_2 {
+      width: 400px;
+      height: 400px;
+      background-image: url("img/cart_3.jpg");
+      
+      /* background: green; */
+    }
+
+    .mid {
+      width: 600px;
+      height: 600px;
+      float: left;
+      margin: 0 10px;
+      /* background: bisque; */
+    }
+
+    .m_2 {
+      width: 100%;
+      height: 50px;
+      background: red;
+
+    }
+
+    .m_1 h1 {
+      margin: 10px 0;
+    }
+
+    .m_2 span {
+      color: white;
+    }
+
+    .m_3 li {
+      margin: 20px 20px;
+      border-bottom: 1px black dashed;
+    }
+
+    .m_3 a button {
+      width: 200px;
+      height: 50px;
+      background: #FF6D00;
+      color: white;
+      float: left;
+      margin: 0 20px;
+      font-size: 20px;
+    }
+
+    .right {
+      width: 480px;
+      height: 1000px;
+      float: left;
+
+
+      /* background: blanchedalmond; */
+
+    }
+
+    .right h1 {
+      margin: 10px 210px;
+      font-size: 20px;
+
+    }
+
+    .r_1 {
+      width: 270px;
+      height: 350px;
+      margin: 20px 100px;
+      padding: 10px 5px 10px 5px;
+      background: white;
+      box-sizing: border-box;
+      float: left;
+    }
+  </style>
+  <script>
+    window.addEventListener('load', function () {
+      var date = document.querySelector('.date');
+      var hours = document.querySelector('.hours');
+      var mins = document.querySelector('.mintues');
+      var seconds = document.querySelector('.second');
+      var inputTime = +new Date('2020-11-20 24:00:00');
+      countDown();
+
+      setInterval(countDown, 1000);
+      function countDown() {
+        var nowTime = +new Date();
+        var times = (inputTime - nowTime) / 1000;
+        var d = parseInt(times / 60 / 60 / 24);
+        date.innerHTML = d + '天';
+        var h = parseInt(times / 60 / 60 % 24);
+        h = h < 10 ? '0' + h : h;
+        hours.innerHTML = h + '小时';
+        var min = parseInt(times / 60 % 60);
+        mins.innerHTML = min + '分钟';
+        var s = parseInt(times % 60);
+        seconds.innerHTML = s + '秒';
+        if (d == 0 && h == 0 && min == 0 && s == 0) {
+          clearInterval(tt);
+          date.innerHTML = hours.innerHTML = mins.innerHTML = seconds.innerHTML = 00;
+        }
+      }
+    })
+  </script>
+</head>
+
+<body>
+  <div class="baba">
+    <iframe src="Hiframe.html" width="100%" height="600px" frameborder=0 scrolling=no></iframe>
+    <!-- 购物车左边 -->
+    <div class="left">
+
+      <!-- <img class="L_img2" src="img/cart_2.png">  -->
+      <div class="left_2"><img class="L_img1" src="img/cart_2.png"></div>
+      <ul>
+        <li><a href=""><img src="img/cart_5 .jpg"></a></li>
+        <li><a href=""><img src="img/cart_5 .jpg"></a></li>
+        <li><a href=""><img src="img/cart_5 .jpg"></a></li>
+        <li><a href=""><img src="img/cart_5 .jpg"></a></li>
+        <li><a href=""><img src="img/cart_5 .jpg"></a></li>
+      </ul>
+    </div>
+    <!-- 购物车左边结束 -->
+
+    <!-- 购物车中间 -->
+    <div class="mid">
+      <!-- 购物车中上 -->
+      <div class="m_1">
+        <h1 style="font-size:20px;">满400减310【三只松鼠_牛奶冻200g】办公室休闲零食小吃Q弹布丁果冻3连杯 芒果味</h1>
+        <h1 style="font-size:15px;"><span style="color:#FF6D00 ;">双十一狂欢来袭 满300减220元</span><a> 点击领取30元可叠加平台券</a></h1>
+      </div>
+      <!-- 购物车中上结束 -->
+
+      <!-- 购物车中2 -->
+      <div class="m_2">
+        <a href="" target="_parent" style="font-family: '华文琥珀'; font-size: 45px; color:white ;"><span>零食秒杀</span>
+        </a>
+        <span>秒杀剩余时间：</span> <span class="date"></span><span class="hours"></span><span class="mintues"></span> <span
+          class="second"></span>
+      </div>
+      <!-- 购物车中2结束 -->
+
+      <!-- 购物车中3开始 -->
+      <div class="m_3">
+        <ul>
+          <li><span>月销量：</span>3573件</li>
+          <li><span>参考价：</span><span style="text-decoration: line-through;">¥40.00</span></li>
+          <li><span>活动价：</span><span style="font-size: 20px ;color:#FF0138;"><b>¥20.00</b></span></li>
+          <li><span>优惠券：</span><a>点击领取30元可叠加平台券</a></li>
+          <li><span>运&nbsp;&nbsp;&nbsp;费：</span>免运费</li>
+          <li><span>发货地：</span>广西</li>
+          <li><span>数&nbsp;&nbsp;&nbsp;量：</span>1件</li>
+          <a href="cart2.html" target="_parent"><button>立刻购买</button></a>
+          <a href="cart2.html" target="_parent"><button>添加购物车</button></a>
+        </ul>
+
+      </div>
+      <!-- 购物车中3结束 -->
+    </div>
+    <!-- 购物车中间结束 -->
+
+    <!-- 购物车右边开始 -->
+    <div class="right">
+      <h1>广告</h1>
+      <!-- 购物车右1开始 -->
+      <div class="r_1">
+        <a href="cart.html" target="_parent">
+          <ul>
+            <li><img src="img/guodong_3.jpg"></li>
+            <li><span style="font-size: 18px;">果冻商城特卖</span></li>
+            <li><span style="border:1px solid red; color:red ; font-size: 5px;">领满300减40</span></li>
+            <li><img src="img/shangping2_2.jpg"><span style="font-size: 20px ;color:#FF0138;"> ¥39</span></li>
+          </ul>
+        </a>
+      </div>
+      <div class="r_1">
+        <a href="cart.html" target="_parent">
+          <ul>
+            <li><img src="img/guodong_2.jpg"></li>
+            <li><span style="font-size: 18px;">果冻商城特卖</span></li>
+            <li><span style="border:1px solid red; color:red ; font-size: 5px;">领满300减40</span></li>
+            <li><img src="img/shangping2_2.jpg"><span style="font-size: 20px ;color:#FF0138;"> ¥60</span></li>
+          </ul>
+        </a>
+      </div>
+      <!-- 购物车右1结束 -->
+    </div>
+    <!-- 购物车右边结束 -->
+    <iframe src="Fiframe.html" width="100%" height="130px" frameborder=0 scrolling=no></iframe>
+  </div>
+</body>
+
+</html>

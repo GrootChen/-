@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>欢迎登陆</title>
+  <link href="GD_tubiao3.ico" rel="shortcut icon">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      /*去掉下换线 */
+      color: inherit;
+      /*恢复字体的默认颜色 */
+    }
+
+    /* a:hover {
+      color: #FF6D00;
+      text-decoration: underline;
+
+    } */
+ button{
+outline: none;
+border: 0px ;
+cursor: pointer;
+
+   }
+    .baba {
+      width: 1500px;
+      height: 750px;
+      margin: 0 auto;
+      position: relative;
+      /* background: pink; */
+    }
+
+    /*头部样式*/
+    .son_top {
+      width: 1000px;
+      height: 100px;
+      position: absolute;
+      top: 10px;
+      left: 0px;
+      /* background: pink; */
+    }
+
+    .son_top a img {
+      vertical-align: middle;
+      /*图片和文字垂直居中*/
+    }
+
+    .son_top2 {
+      width: 150px;
+      height: 20px;
+      position: absolute;
+      top: 100px;
+      left: 1020px;
+    }
+
+    /*头部样式结束*/
+    .son_mid {
+      position: absolute;
+      top: 130px;
+      left: -700px;
+    }
+
+    .son_mid2 {
+      width: 360px;
+      height: 415px;
+      background: white;
+      position: absolute;
+      top: 220px;
+      left: 800px;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .son_mid2 p {
+      margin: 30px;
+
+    }
+
+    .son_mid2 p input {
+      width: 250px;
+      height: 30px;
+    }
+
+    .son_mid2 p img {
+      vertical-align: middle;
+      /*图片和文字垂直居中*/
+    }
+
+    .son_mid3 {
+      margin: 0 0 0 220px;
+    }
+
+    .son_mid3 a {
+      font-size: 10px;
+    }
+
+    .son_mid4 {
+      width: 290px;
+      height: 50px;
+      position: absolute;
+      top: 220px;
+      left: 0px;
+
+
+    }
+
+    .son_mid5 {
+
+      font-size: 10px;
+      margin: 70px 0 0 0;
+
+    }
+
+    .son_mid6 {
+      margin: 10px 0 0 0;
+
+    }
+
+    .son_mid6 img {
+      margin: 0 20px;
+
+    }
+
+    /* 鼠标移动a标签变色 */
+    .son_top2 :hover {
+      color: #FF6D00;
+      text-decoration: underline;
+
+    }
+
+    .son_mid3 :hover {
+      color: #FF6D00;
+      text-decoration: underline;
+
+    }
+
+    .son_mid5 :hover {
+      color: #FF6D00;
+      text-decoration: underline;
+
+    }
+
+    /* 鼠标移动a标签变色结束 */
+  </style>
+
+  <script src="Jquery2.js"></script>
+  <script>
+    $(function () {
+      var str = localStorage.getItem("GMSC_LoginName")
+      if (str != null) {
+        temp = str.split("|")
+        $("#txtName").val(temp[0])
+        $("#txtPwd").val(temp[1])
+      } else {
+        console.log("无数据记录")
+      }
+    })
+
+    function mylogin() {
+      var dengluming = $("#txtName").val()
+      var mima = $("#txtPwd").val()
+      var temp = localStorage.getItem("Allyonghu")
+
+      if (temp != null) {
+        var json = JSON.parse(temp)
+        var bol = false
+        for (var i = 0; i < json.length; i++) {
+          if (dengluming == json[i].dengluming) {
+            bol = true
+            console.log(dengluming)
+            if (mima == json[i].mima) {
+              console.log(mima)
+              alert("登陆成功")
+              location.href = "index.html";
+              if ($("#jizhumima").get(0).checked) {
+                localStorage.setItem("GMSC_LoginName", dengluming + "|" + mima);
+
+
+              }
+            } else {
+              alert("密码错误")
+              return
+            }
+          }
+        } if (!bol) {
+          alert("此用户名不存在")
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="baba">
+    <!-- 头部开始 -->
+    <div class="son_top">
+      <a href="index.html" target="_parent" style="font-family: '华文琥珀'; font-size: 50px; color:#FF6D00 ;"><img
+          src="img/GD_tubiao4.png"><span>Guodong果冻零食</span> </a>
+    </div>
+    <div class="son_top2"><a href="zhuce.html" target="_parent">没有注册？点击注册</a></div>
+    <!-- 头部结束 -->
+    <div class="son_mid"><img src="img/login.png"></div>
+    <!-- 登录框 -->
+    <div class="son_mid2">
+      <h2>登录账户</h2>
+      <br>
+      <hr>
+      <p><img src="img/login_2.0.png"><input type="text" id=txtName placeholder="输入用户名"></p>
+      <p><img src="img/login_3.0.png"><input type="password" id=txtPwd placeholder="输入密码"></p>
+      <div class="son_mid3"><a href="zhuce.html" target="_parent">忘记密码？</a></div>
+      <div class="son_mid4">
+        <p><a href="#"><img src="img/login_4.png" onclick="mylogin()"></a></p>
+      </div>
+      <div class="son_mid5"><a href="zhuce.html" target="_parent">注册有惊喜></a></div>
+      <div class="son_mid6">
+        使用其他账号登录<br><br>
+        <img src="img/QQ2.png">
+        <img src="img/wechat2.png">
+
+
+      </div>
+    </div>
+    <!-- 登录框结束 -->
+  </div>
+  <iframe src="Fiframe.html" width="100%" height="130px" frameborder=0 scrolling=no></iframe>
+</body>
+
+</html>

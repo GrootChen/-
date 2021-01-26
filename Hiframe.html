@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="swiper.min.css">
+  <script src="swiper.jquery.min.js"></script>
+  <script src="swiper.min.js"></script>
+</head>
+<style>
+  * {
+    padding: 0 0;
+    margin: 0 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  li:hover {
+    background-color: red;
+  }
+
+  .tou_shang {
+    width: 100%;
+    height: 200px;
+    background: pink;
+  }
+
+  .tou_1 {
+    width: 1500px;
+    height: 610px;
+    /*background: #E0E0E0;*/
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .tou_2 {
+    width: 550px;
+    height: 30px;
+    /*background: green;*/
+    position: absolute;
+    top: 0px;
+    left: 950px;
+
+  }
+
+  .tou_2 ul li {
+    float: left;
+    list-style: none;
+    margin: 0 20px 0 20px;
+  }
+
+  .tou_3 {
+    width: 900px;
+    height: 50px;
+    /* background: green; */
+    position: absolute;
+    top: 150px;
+    left: 320px;
+  }
+
+  .tou_3 ul li {
+    float: left;
+    list-style: none;
+    font-size: 30px;
+    font-weight: bold;
+
+    margin: 10px 50px 0 50px;
+
+  }
+
+  .tou_4 {
+    width: 1500px;
+    height: 400px;
+    position: absolute;
+    top: 200px;
+    left: 0px;
+
+  }
+
+  .tou_mid {
+    width: 500px;
+    height: 60px;
+    position: absolute;
+    top: 70px;
+    left: 470px;
+  }
+
+  /* 轮播 */
+  html,
+  body {
+    position: relative;
+    height: 100%;
+  }
+
+  body {
+    /*background: #eee;*/
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+  }
+
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* 轮播结束 */
+</style>
+
+
+<div class="tou_1">
+  <div class="tou_shang">
+    <img src="img/GD_tubiao.png">
+
+    <div class="tou_2">
+      <ul>
+        <li><a href="index.html" target="_parent">首页</a></li>
+        <li><a href="help.html" target="_parent">产品中心</a></li>
+        <li><a href="help.html" target="_parent">关于我们</a></li>
+        <li><a href="cart2.html" target="_parent">购物车</a></li>
+        <li><a href="login.html" target="_parent">登录</a></li>
+        <li><a href="zhuce.html" target="_parent">注册</a></li>
+      </ul>
+    </div>
+
+    <div class="tou_3">
+      <ul>
+        <li><a href="index.html" target="_parent">首页</a></li>
+        <li><a href="shopping1.html" target="_parent">果冻</a></li>
+        <li><a href="shopping2.html" target="_parent">冰淇淋</a></li>
+        <li><a href="shopping3.html" target="_parent">糖果</a></li>
+        <li><a href="shopping4.html" target="_parent">饼干</a></li>
+      </ul>
+    </div>
+
+    <div class="tou_4">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" style="background-image:url(img/1lunbo_1.jpg)"></div>
+          <div class="swiper-slide" style="background-image:url(img/2lunbo_2.jpg)"></div>
+          <div class="swiper-slide" style="background-image:url(img/3lunbo_3.jpg)"></div>
+          <div class="swiper-slide" style="background-image:url(img/4lunbo_4.jpg)"></div>
+
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-white"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+      </div>
+      <script>
+        var swiper = new Swiper('.swiper-container', {
+          pagination: '.swiper-pagination',
+          paginationClickable: true,
+          nextButton: '.swiper-button-next',
+          prevButton: '.swiper-button-prev',
+          spaceBetween: 30,
+          effect: 'fade'
+        });
+      </script>
+
+    </div>
+    <div class="tou_mid">
+      <a style="font-family: '华文琥珀'; font-size: 50px; color:#FF6D00 ;">Guodong果冻零食商城 </a>
+      <div>
+      </div>
+    </div>
+
+
+
+
+    </body>
+
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>购物车</title>
+  <link href="GD_tubiao3.ico" rel="shortcut icon">
+  <script src="jQuery.js"></script>
+  <script>
+    $(function () {
+      getSum();
+      // var price1 = 0;
+      // 计算总件数和总价钱函数
+      function getSum() {
+        var money = 0;  //总价钱
+        var money1 = 0  //总省的金额
+        // 循环获取小计金额
+        $(".p6").each(function (i, ele) {
+          money += parseFloat($(ele).text().substr(1));
+        })
+        // 赋值给总计
+        $(".zong").text("共：￥" + money.toFixed(2));
+
+        $(".p8").each(function (i, ele) {
+          money1 += parseFloat($(ele).text().substr(1));
+        })
+        money1 = money1 - money;
+        $(".jiesheng").text("￥" + money1.toFixed(2));
+      }
+      // 当数量发生改变时
+      $(".num").change(function () {
+        var n = $(this).val();  //购买的数量
+        var p = $(this).parent().siblings(".p3").html();  //获取优惠单价
+        p = p.substr(1);  //截取后面数字
+        var price = (p * n).toFixed(2);  //相乘
+
+        var p1 = $(this).parent().siblings(".p2").html();
+        p1 = p1.substr(1);
+        price1 = (p1 * n).toFixed(2);
+        //    price1 = price1 - price;
+        $(this).parent().siblings(".p6").text("￥" + price);  //赋值给小计
+        $(this).parent().siblings(".p8").text("￥" + price1);
+        getSum();
+      })
+
+      // 删除
+      $(".p7 a").click(function () {
+        $(this).parents(".lili").remove();
+        getSum();
+      })
+    })
+  </script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+
+
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      /*去掉下换线 */
+      color: inherit;
+      /*恢复字体默认颜色 */
+    }
+ button{
+outline: none;
+border: 0px ;
+cursor: pointer;
+
+   }
+    /* img {
+      vertical-align: middle;
+    } */
+
+    a:hover {
+      color: brown;
+      text-decoration: underline;
+
+    }
+
+    .baba {
+      width: 1500px;
+      height: 1600px;
+      margin: 0 auto;
+    }
+
+    .son {
+      width: 100%;
+      height: 30px;
+      border-bottom: 1px black solid;
+    }
+
+    h3 {
+      margin: 10px 0 0 0;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    input {
+      width: 300px;
+      height: 30px;
+    }
+
+    .zhong {
+      width: 100%;
+      height: 250px;
+      border-top: 5px #FF6D00 solid;
+      margin: 20px 0;
+      /* background: green; */
+
+    }
+
+    .zhong h5 {
+      width: 100%;
+      height: 85px;
+      line-height: 85px;
+    }
+
+    .zhong h5 text {
+      margin: 0 40px;
+    }
+
+    .zhong .tou {
+      width: 97%;
+      margin: 0 auto;
+    }
+
+    .zhong .biaoti {
+      width: 100%;
+      height: 35px;
+      font-weight: 700;
+      line-height: 35px;
+      padding-left: 60px;
+      background: url(GMimge/buytitle_bg.gif) no-repeat;
+    }
+
+    .zhong .biaoti:nth-child(5) {
+      font-weight: 400;
+    }
+
+    .zhong .tou text:nth-child(1) {
+      margin: 0 80px 0 330px;
+    }
+
+    .zhong .tou h4 text:nth-child(2) {
+      margin: 0 80px 0 70px;
+    }
+
+    .zhong .tou h4 text:nth-child(3) {
+      margin: 0 60px 0 65px;
+    }
+
+    .zhong .tou li {
+      margin-bottom: 10px;
+    }
+
+    .zhong .tou li p {
+      display: inline-block;
+    }
+
+    .zhong .tou li .p1 {
+      width: 351px;
+    }
+
+    .zhong .tou li .p2 {
+      width: 120px;
+    }
+
+    .zhong .tou li .p3 {
+      width: 126px;
+    }
+
+    .zhong .tou li .p4 {
+      width: 100px;
+    }
+
+    .zhong .tou li .p5 {
+      width: 97px;
+    }
+
+    .zhong .tou li .p5 input {
+      width: 50px;
+    }
+
+    .zhong .tou li .p6 {
+      width: 105px;
+    }
+
+    h6 {
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .zhong table tr td:nth-child(1) {
+      text-align: right;
+    }
+
+    .zhong table tr {
+      height: 30px;
+    }
+
+    .in1 {
+      width: 40px;
+    }
+
+    .in2 {
+      width: 100px;
+    }
+
+    .zhong div:nth-child(6) {
+      padding: 10px 0 0 105px;
+    }
+
+    .zhong table tr td text {
+      font-weight: 700;
+    }
+
+    .zhong .tou li .p8 {
+      display: none;
+    }
+
+    .zhong .tou li .p6 {
+      display: none;
+    }
+
+    .bottom {
+      width: 100%;
+      height: 250px;
+      border-top: 5px #FF6D00 solid;
+      margin: 20px 0;
+      /* background: green; */
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="baba">
+    <iframe src="Hiframe.html" width="100%" height="610px" frameborder=0 scrolling=no></iframe>
+    <div class="son">您现在的位置：<a href='index.html' target="_parent">主页</a> > <a href='cart2.html' target="_parent">购物车</a>
+    </div>
+    <h3>
+      <img src="img/cart2_1.png">我的购物车
+      <text style="margin: 0 40px;">全场满69元免运费</text>简易计算器
+    </h3>
+    <div class="zhong">
+
+      <div class="tou">
+        <h4>商品名<text>原价</text>优惠价<text>打折</text>数量
+          <!--<text>小计</text>--><text>删除</text></h4>
+        <li class="lili">
+          <p class="p1">良品铺子面包蛋糕零食小吃休闲食品</p>
+          <p class="p2">￥80.00</p>
+          <p class="p3">￥40.00</p>
+          <p class="p4">5折</p>
+          <p class="p5"><input type="text" value="1" class="num"></p>
+          <p class="p6">￥40.00</p>
+          <p class="p7"><a href="javascript:;">删除</a></p>
+          <p class="p8">￥80.00</p>
+        </li>
+        <li class="lili">
+          <p class="p1">乐事原切薯片休闲小吃</p>
+          <p class="p2">￥40.00</p>
+          <p class="p3">￥20.00</p>
+          <p class="p4">5折</p>
+          <p class="p5"><input type="text" value="1" class="num"></p>
+          <p class="p6">￥20.00</p>
+          <p class="p7"><a href="javascript:;">删除</a></p>
+          <p class="p8">￥40.00</p>
+        </li>
+        <li class="lili">
+          <p class="p1">新货每日坚果大罐混合包装</p>
+          <p class="p2">￥39.00</p>
+          <p class="p3">￥17.00</p>
+          <p class="p4">5折</p>
+          <p class="p5"><input type="text" value="1" class="num"></p>
+          <p class="p6">￥17.00</p>
+          <p class="p7"><a href="javascript:;">删除</a></p>
+          <p class="p8">￥39.00</p>
+        </li>
+        <h6><a href="index.html" target="_parent">继续挑选商品</a> <text class="zong"
+            style="margin: 0 265px;">共：￥52.40</text>你共节省：<text class="jiesheng">￥348.60</text></h6>
+
+      </div>
+    </div>
+    <h3>
+      <img src="img/cart2_2.png" style="margin: 0 10px 0 0 ;">填写地址
+      <text style="margin: 0 40px;">填写收件人地址和联系电话</text>
+    </h3>
+    <div class="bottom">
+      <table>
+        <tr>
+          <td>收件人：</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>地 &nbsp;&nbsp;址：</td>
+          <td><input type="text"> </td>
+        </tr>
+        <tr>
+          <td>电 &nbsp;&nbsp;话：</td>
+          <td><input type="text" class="in1"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button style="width: 100px;height: 30px;font-size: 10px;color: white;background: #FF6D00;">确认</button>
+            <button style="width: 100px;height: 30px;font-size: 10px;color: white;background: #FF6D00;">重填</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <iframe src="Fiframe.html" width="100%" height="130px" frameborder=0 scrolling=no></iframe>
+  </div>
+
+</body>
+
+</html>
